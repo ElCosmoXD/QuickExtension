@@ -1,0 +1,69 @@
+[gd_scene load_steps=2 format=3 uid="uid://di14tdi5wsuxu"]
+
+[ext_resource type="Script" path="res://addons/gdext-manager/Dialogs/node_creator.gd" id="1_3p3sg"]
+
+[node name="NodeCreator" type="PopupPanel"]
+title = "Create new Node..."
+initial_position = 4
+size = Vector2i(650, 179)
+visible = true
+borderless = false
+script = ExtResource("1_3p3sg")
+
+[node name="VContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node data" type="HBoxContainer" parent="VContainer"]
+layout_direction = 2
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VContainer/Node data"]
+layout_mode = 2
+text = "Node name: "
+
+[node name="LineEdit" type="LineEdit" parent="VContainer/Node data"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "AwesomeNode"
+
+[node name="Node base" type="HBoxContainer" parent="VContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VContainer/Node base"]
+layout_mode = 2
+text = "Node type:    "
+
+[node name="Nodes" type="OptionButton" parent="VContainer/Node base"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = -1
+item_count = 0
+[node name="Custom folder" type="CheckButton" parent="VContainer"]
+layout_mode = 2
+text = "Put generated files in another folder? (relative to the sources/headers folder)"
+text_overrun_behavior = 2
+autowrap_mode = 3
+
+[node name="Custom folder selection" type="HBoxContainer" parent="VContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Path" type="LineEdit" parent="VContainer/Custom folder selection"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "custom_folder (NAME ONLY!)"
+
+[node name="Create" type="Button" parent="VContainer"]
+layout_mode = 2
+text = "Create"
+
+[connection signal="toggled" from="VContainer/Custom folder" to="." method="_on_custom_folder_toggled"]
+[connection signal="pressed" from="VContainer/Create" to="." method="_on_create_pressed"]

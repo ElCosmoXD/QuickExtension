@@ -1,0 +1,15 @@
+#include <godot_cpp/godot.hpp>
+#include <godot_cpp/classes/template_replace_base_class_header.h>
+
+using namespace godot;
+
+class TEMPLATE_REPLACE_CLASS_NAME : public TEMPLATE_REPLACE_CLASS_BASE {
+	GDCLASS(TEMPLATE_REPLACE_CLASS_NAME, TEMPLATE_REPLACE_CLASS_BASE);
+
+protected:
+	static void _bind_methods();
+
+public:
+	TEMPLATE_REPLACE_CLASS_NAME();
+	~TEMPLATE_REPLACE_CLASS_NAME();
+};

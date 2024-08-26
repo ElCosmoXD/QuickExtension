@@ -1,0 +1,19 @@
+#include "template_replace_header.h"
+
+#include <godot_cpp/core/class_db.hpp>
+#include <godot_cpp/variant/utility_functions.hpp>
+
+using namespace godot;
+
+void TEMPLATE_REPLACE_CLASS_NAME::_bind_methods() {
+	
+}
+
+
+TEMPLATE_REPLACE_CLASS_NAME::TEMPLATE_REPLACE_CLASS_NAME() {
+
+}
+
+TEMPLATE_REPLACE_CLASS_NAME::~TEMPLATE_REPLACE_CLASS_NAME() {
+
+}

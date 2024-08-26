@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://di14tdi5wsuxu"]
 
-[ext_resource type="Script" path="res://addons/gdext-manager/Dialogs/node_creator.gd" id="1_3p3sg"]
+[ext_resource type="Script" path="res://addons/QuickExtension/Dialogs/node_creator.gd" id="1_3p3sg"]
 
 [node name="NodeCreator" type="PopupPanel"]
 title = "Create new Node..."
@@ -44,8 +44,6 @@ text = "Node type:    "
 [node name="Nodes" type="OptionButton" parent="VContainer/Node base"]
 layout_mode = 2
 size_flags_horizontal = 3
-selected = -1
-item_count = 0
 [node name="Custom folder" type="CheckButton" parent="VContainer"]
 layout_mode = 2
 text = "Put generated files in another folder? (relative to the sources/headers folder)"

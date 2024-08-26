@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cclx8ho54yvwu"]
 
-[ext_resource type="Script" path="res://addons/gdext-manager/Dialogs/welcome.gd" id="1_q0xnq"]
+[ext_resource type="Script" path="res://addons/QuickExtension/Dialogs/welcome.gd" id="1_q0xnq"]
 
 [node name="Welcome" type="Window"]
 disable_3d = true

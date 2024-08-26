@@ -8,9 +8,15 @@ First, you need to download this extension, to do this, you can download it by [
 
 Once you have the `addons/QuickExtension` folder, you have to go to the Godot Editor and go to the `Project/Project Settings...` tab, then go to `Plugins` and enable the extension.
 
+![img_1](images/1.png)
+
 Now, a popup window will appear to configure the plugin, it is important to **not close the window**, if you close the window, reload the project.
 
+![img_2](images/2.png)
+
 After setting up the plugin, go to `Project/Tools/Create New Class...` and create your class / node by filling the fields in the window.
+
+![img_3](images/3.png)
 
 With everything done, you can now see that in your specified header/source folders are now the new files with the initial code for a class.
 

@@ -4,7 +4,12 @@ extends Window
 var use_cpp_headers = false
 
 func _on_confirm_button_up():
-	var data = {"cpp": {"sources": $Container/cpp/Sources.text}}
+	var sources_folder: String = $Container/cpp/Sources.text
+	if sources_folder.is_empty():
+		printerr("Can't create plugin data if the sources folder is empty!")
+		return
+	
+	var data = {"cpp": {"sources": sources_folder}}
 
 	if use_cpp_headers:
 		data["cpp"].merge({"headers": $Container/cpp/Headers.text})
@@ -20,7 +25,6 @@ func _on_confirm_button_up():
 	if data["cpp"]["use_reg_types_template"]:
 		var register_types_header_template = FileAccess.open(QuickExtension.REGISTER_CLASS_TEMPLATE_HEADER, FileAccess.READ)
 		var register_types_header = FileAccess.open("{0}/register_types.h".format([data["cpp"]["headers"]]), FileAccess.WRITE)
-		print("{0}/register_types.h".format([data["cpp"]["headers"]]))
 		register_types_header.store_string(register_types_header_template.get_as_text())
 		
 		register_types_header.close()

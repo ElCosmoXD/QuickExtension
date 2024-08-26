@@ -45,6 +45,8 @@ func _exit_tree():
 		
 	if create_node_instance:
 		create_node_instance.queue_free()
+		
+	remove_tool_menu_item("Create new Class...")
 
 func _get_plugin_icon():
 	return EditorInterface.get_editor_theme().get_icon("Node", "EditorIcons")

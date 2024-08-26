@@ -38,4 +38,4 @@ static func camel_to_snake(camel_case_str: String) -> String:
 		else:
 			snake_case_str += char
 
-	return snake_case_str.replace("2_D", "2D").replace("3_D", "3D").to_lower()
+	return snake_case_str.replace("_2_D", "2D").replace("_3_D", "3D").to_lower()

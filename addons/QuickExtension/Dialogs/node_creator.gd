@@ -1,14 +1,13 @@
 @tool
 extends PopupPanel
 
-static var available_nodes_added = false
 var use_custom_folder = false
 
 func _enter_tree() -> void:
 	var node_types = ClassDB.get_class_list()
 	
-	if available_nodes_added:
-		return
+	# Prevent keeping the popup active in case of closing accidentaly the window
+	popup_hide.connect(func (): queue_free())
 	
 	var nodes_container: OptionButton = $"VContainer/Node base/Nodes"
 	nodes_container.clear()
@@ -17,7 +16,6 @@ func _enter_tree() -> void:
 		nodes_container.add_item(node_name)
 
 	nodes_container.selected = randi_range(0, nodes_container.item_count)
-	available_nodes_added = true
 
 func _on_create_pressed() -> void:
 	var node_name = $"VContainer/Node data/LineEdit".text

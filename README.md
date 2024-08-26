@@ -1,16 +1,16 @@
 # QuickExtension
-Make games (GDExtensions) faster than before when using GDExtension (C++ supported only for now).
+Make games (GDExtensions) faster than before (C++ supported only for now).
 
-When I was making the third prototype of my game ShapeWorld: FightLand I did it in Godot 4 using C++ since I like the performance and also, the C++ syntax is nice but after working some time in the project, using C++ as the main programming language became annoying because every time I wanted to create a new class / node, I had to create the files manually and rewrite the same code again and also had to create the source file, the header and then add the new files to the build (I was using CMake) so after a month of working in the game I stopped working on it due to this annoying issue (and other problems I found in the engine back then), because of this I made this simple extension, this extension allows you to create classes / nodes in a easy way.
+When I was making the third prototype of my game ShapeWorld: FightLand I did it in Godot 4 using C++ since I like the performance and also the C++ syntax is nice but after working some time in the project, using C++ as the main programming language became annoying because every time I wanted to create a new class / node, I had to create the files manually and rewrite the same code again and I also had to create the source file, the header and then add the new files to the build system (I was using CMake) so after a month of working in the game I stopped working on it due to this annoying issue (and other problems I found in the engine back then), because of this I made this simple extension, this extension allows you to create classes / nodes in a easy way.
 
 # Set up
-First, you need to download this extension, to do this, you can download it by [cloning this repository](https://github.com/ElCosmoXD/QuickExtension/archive/refs/heads/main.zip) using the `Code->Download` ZIP button or you can download it from the [Releases page](https://github.com/ElCosmoXD/QuickExtension/releases).
+First, you need to download this extension, to do this, you can download it by [cloning this repository](https://github.com/ElCosmoXD/QuickExtension/archive/refs/heads/main.zip) using the `Code->Download ZIP` button or you can download it from the [Releases page](https://github.com/ElCosmoXD/QuickExtension/releases).
 
 Once you have the `addons/QuickExtension` folder, you have to go to the Godot Editor and go to the `Project/Project Settings...` tab, then go to `Plugins` and enable the extension.
 
 ![img_1](images/1.png)
 
-Now, a popup window will appear to configure the plugin, it is important to **not close the window**, if you close the window, reload the project.
+Now, a popup window will appear to configure the plugin, **don't close the window**, if you close the window, reload the project.
 
 ![img_2](images/2.png)
 
@@ -18,7 +18,7 @@ After setting up the plugin, go to `Project/Tools/Create New Class...` and creat
 
 ![img_3](images/3.png)
 
-With everything done, you can now see that in your specified header/source folders are now the new files with the initial code for a class.
+With everything done, you can now see that your specified header/source folders have the created files with some initial code for a class.
 
 # Customization
 The files that this plugin generates are very easy to customize, the templates that this plugin uses are located in `addons/QuickExtension/Templates`.

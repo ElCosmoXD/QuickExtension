@@ -4,7 +4,7 @@ Make games (GDExtensions) faster than before when using GDExtension (C++ support
 When I was making the third prototype of my game ShapeWorld: FightLand I did it in Godot 4 using C++ since I like the performance and also, the C++ syntax is nice but after working some time in the project, using C++ as the main programming language became annoying because every time I wanted to create a new class / node, I had to create the files manually and rewrite the same code again and also had to create the source file, the header and then add the new files to the build (I was using CMake) so after a month of working in the game I stopped working on it due to this annoying issue (and other problems I found in the engine back then), because of this I made this simple extension, this extension allows you to create classes / nodes in a easy way.
 
 # Set up
-First, you need to download this extension, to do this, you can download it by [cloning this repository](https://github.com/ElCosmoXD/QuickExtension/archive/refs/heads/main.zip) using the `Code->Download` ZIP button or you can download it from the [Releases page](https://github.com/ElCosmoXD/QuickExtension/Releases).
+First, you need to download this extension, to do this, you can download it by [cloning this repository](https://github.com/ElCosmoXD/QuickExtension/archive/refs/heads/main.zip) using the `Code->Download` ZIP button or you can download it from the [Releases page](https://github.com/ElCosmoXD/QuickExtension/releases).
 
 Once you have the `addons/QuickExtension` folder, you have to go to the Godot Editor and go to the `Project/Project Settings...` tab, then go to `Plugins` and enable the extension.
 

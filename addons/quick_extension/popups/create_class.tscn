@@ -1,0 +1,97 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcugon3miigdp"]
+
+[sub_resource type="GDScript" id="GDScript_1hyyh"]
+script/source = "@tool
+extends PopupPanel
+
+func load_items() -> void:
+	if visible && is_inside_tree():
+		var types = ClassDB.get_class_list()
+
+		for type in types:
+			$Container/Type/Type_OptionButton.add_item(type)
+
+		$Container/Type/Type_OptionButton.selected = randi_range(0, types.size())
+
+
+func _on_create_button_up() -> void:
+	var class_name_ = $\"Container/Name/Name_LineEdit\".text
+	var class_type = $\"Container/Type/Type_OptionButton\".text
+
+	QuickExtension.create_class(class_name_, class_type)
+	
+	queue_free()
+"
+
+[node name="CreateClass" type="PopupPanel"]
+title = "Create new Class..."
+position = Vector2i(0, 36)
+size = Vector2i(541, 179)
+visible = true
+borderless = false
+script = SubResource("GDScript_1hyyh")
+
+[node name="Container" type="VBoxContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 537.0
+offset_bottom = 175.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Name" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="Name_Label" type="Label" parent="Container/Name"]
+layout_mode = 2
+text = "Name"
+
+[node name="Name_LineEdit" type="LineEdit" parent="Container/Name"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "AwesomeClass"
+
+[node name="Type" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="Type_Label" type="Label" parent="Container/Type"]
+layout_mode = 2
+text = "Type"
+
+[node name="Type_OptionButton" type="OptionButton" parent="Container/Type"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="C++" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Source Folder" type="HBoxContainer" parent="Container/C++"]
+layout_mode = 2
+
+[node name="Source_Label" type="Label" parent="Container/C++/Source Folder"]
+layout_mode = 2
+text = "Source folder"
+
+[node name="Source_LineEdit" type="LineEdit" parent="Container/C++/Source Folder"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Leave blank to add the source in the root sources folder"
+
+[node name="Header Folder" type="HBoxContainer" parent="Container/C++"]
+layout_mode = 2
+
+[node name="Header_Label" type="Label" parent="Container/C++/Header Folder"]
+layout_mode = 2
+text = "Header folder"
+
+[node name="Header_LineEdit" type="LineEdit" parent="Container/C++/Header Folder"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Leave blank to add the header in the root headers folder"
+
+[node name="Create" type="Button" parent="Container"]
+layout_mode = 2
+text = "Create"
+
+[connection signal="button_up" from="Container/Create" to="." method="_on_create_button_up"]

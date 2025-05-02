@@ -6,28 +6,25 @@ When I was making the third prototype of my game ShapeWorld: FightLand I did it 
 # Set up
 First, you need to download this extension, to do this, you can download it by [cloning this repository](https://github.com/ElCosmoXD/QuickExtension/archive/refs/heads/main.zip) using the `Code->Download` ZIP button or you can download it from the [Releases page](https://github.com/ElCosmoXD/QuickExtension/releases).
 
-Once you have the `addons/QuickExtension` folder, you have to go to the Godot Editor and go to the `Project/Project Settings...` tab, then go to `Plugins` and enable the extension.
+Once you have the `addons/quick_extension` folder, you have to open your project in the Godot Editor, then go to `Project/Project Settings...` and open the `Plugins` tab and finally, enable the extension.
 
 ![img_1](images/1.png)
 
-Now, a popup window will appear to configure the plugin, it is important to **not close the window**, if you close the window, reload the project.
+Now, a popup window will appear to configure the plugin, it is important **not to close the window**, if you close the window, reload the project.
+
+![img_0](images/0.png)
+
+After setting up the plugin, go to `Project/Tools/Create New Class...`
 
 ![img_2](images/2.png)
 
-After setting up the plugin, go to `Project/Tools/Create New Class...` and create your class / node by filling the fields in the window.
+Now you can create your new class by filling the fields in a popup that will appear.
+
+**Note:** The fields may vary depending on the selected language for the extension
 
 ![img_3](images/3.png)
 
-With everything done, you can now see that in your specified header/source folders are now the new files with the initial code for a class.
-
-# Customization
-The files that this plugin generates are very easy to customize, the templates that this plugin uses are located in `addons/QuickExtension/Templates`.
-
-### Custom source / header files
-To customize the generated source and header files, go to the Templates folder and customize the `Class-Template.cpp.txt` and `Class-Template.h.txt` files. **Do not remove the text in uppercase** since that text is used to replace the class names. Also, do not delete the `#include <godot_cpp/classes/template_replace_base_class_header.h>` include.
-
-### Custom types register
-To customize the generated `register_types.cpp`, you can go to the Templates folder and modify it as you like but **don't delete or move the `/* REPLACE THIS WITH THE USER CLASSES */` line to another function outside `initialize_gdextension_types`** since that line is replaced with the classes you have registered in the plugin.
+With everything done, you can now see that in your header/source folders are now the new files with the initial code for a basic class.
 
 # Roadmap
 This extension is in a pretty early state and there are many things to improve, with that said, every PR with new features or fixes are always welcome.
@@ -37,7 +34,15 @@ Things missing / TODO:
 - [ ] Support for other languages (Rust, Go, C, etc)
 - [ ] Build project from editor
 - [ ] Add generated files to CMake (or other build system)
-- [ ] Support for generating files using CamelCase names
+
+# Customization
+The files that this plugin generates are very easy to customize, the templates that this plugin uses are located in `addons/quick_extension/templates`.
+
+### Custom source / header files
+To customize the generated source and header files, go to the templates folder and customize the `Class-Template.cpp.txt` and `Class-Template.h.txt` files as you like. **Do not remove the text in uppercase or commentaries!** since that text is used to replace the class names or other generated content. Also, do not delete the `#include <godot_cpp/classes/template_replace_base_class_header.h>` include.
+
+### Custom types register
+To customize the generated `register_types.cpp`, you can go to the templates folder and modify it as you like but **don't delete or move the `/* REPLACE THIS WITH THE USER CLASSES */` line to another function outside `initialize_gdextension_types`** since that line is replaced with the classes you have registered with the plugin.
 
 # Credits
 

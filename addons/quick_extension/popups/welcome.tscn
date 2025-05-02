@@ -1,0 +1,137 @@
+[gd_scene load_steps=2 format=3 uid="uid://5ob6gnu21w31"]
+
+[sub_resource type="GDScript" id="GDScript_2fp3y"]
+script/source = "@tool
+extends PopupPanel
+
+func _on_ready_button_up() -> void:
+	var build_system: int = $\"Container/C++/Build System/BuildSys\".selected
+	var sources: String = $\"Container/C++/Sources/Sources_LineEdit\".text
+	var headers: String = $\"Container/C++/Headers/Headers_LineEdit\".text
+	var register_types: bool = $\"Container/C++/Misc/Register Types_Check\".button_pressed
+	
+	QuickExtensionUtils.create_cpp_config_file(sources, headers, build_system, register_types)
+
+	queue_free()
+
+func _on_select_folder_h_button_up() -> void:
+	QuickExtension.select_directory_dialog(func select(dir): 
+		$\"Container/C++/Headers/Headers_LineEdit\".text = dir
+	)
+
+func _on_select_folder_s_button_up() -> void:
+	QuickExtension.select_directory_dialog(func select(dir): 
+		$\"Container/C++/Sources/Sources_LineEdit\".text = dir
+	)
+"
+
+[node name="Welcome" type="PopupPanel"]
+title = "Setup"
+position = Vector2i(0, 36)
+size = Vector2i(541, 238)
+visible = true
+borderless = false
+script = SubResource("GDScript_2fp3y")
+
+[node name="Container" type="VBoxContainer" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 537.0
+offset_bottom = 234.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Welcome_Label" type="Label" parent="Container"]
+layout_mode = 2
+text = "Thanks for trying out QuickExtension! Let's set up the extension first:"
+
+[node name="Lang" type="HBoxContainer" parent="Container"]
+layout_mode = 2
+
+[node name="Lang_Label" type="Label" parent="Container/Lang"]
+layout_mode = 2
+text = "Language:"
+
+[node name="Language" type="OptionButton" parent="Container/Lang"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 1
+popup/item_0/text = "C++"
+popup/item_0/id = 0
+
+[node name="C++" type="VBoxContainer" parent="Container"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Build System" type="HBoxContainer" parent="Container/C++"]
+layout_mode = 2
+
+[node name="BuildSys_Label" type="Label" parent="Container/C++/Build System"]
+layout_mode = 2
+text = "Build system:"
+
+[node name="BuildSys" type="OptionButton" parent="Container/C++/Build System"]
+layout_mode = 2
+size_flags_horizontal = 3
+selected = 0
+item_count = 3
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "CMake"
+popup/item_1/id = 1
+popup/item_2/text = "Make"
+popup/item_2/id = 2
+
+[node name="Sources" type="HBoxContainer" parent="Container/C++"]
+layout_mode = 2
+
+[node name="Sources_Label" type="Label" parent="Container/C++/Sources"]
+layout_mode = 2
+text = "Where are the source files located:"
+
+[node name="Sources_LineEdit" type="LineEdit" parent="Container/C++/Sources"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "res://cpp/src"
+
+[node name="Select Folder_S" type="Button" parent="Container/C++/Sources"]
+visible = false
+layout_mode = 2
+text = "Folder"
+
+[node name="Headers" type="HBoxContainer" parent="Container/C++"]
+layout_mode = 2
+
+[node name="Headers_Label" type="Label" parent="Container/C++/Headers"]
+layout_mode = 2
+text = "Where are the header files located:"
+
+[node name="Headers_LineEdit" type="LineEdit" parent="Container/C++/Headers"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "res://cpp/include"
+
+[node name="Select Folder_H" type="Button" parent="Container/C++/Headers"]
+visible = false
+layout_mode = 2
+text = "Folder"
+
+[node name="Misc" type="HBoxContainer" parent="Container/C++"]
+layout_mode = 2
+
+[node name="Register Types_Label" type="Label" parent="Container/C++/Misc"]
+layout_mode = 2
+text = "Automatically add classes to register_types.cpp?:"
+
+[node name="Register Types_Check" type="CheckBox" parent="Container/C++/Misc"]
+layout_mode = 2
+button_pressed = true
+
+[node name="Ready" type="Button" parent="Container"]
+layout_mode = 2
+text = "All ready!"
+
+[connection signal="button_up" from="Container/C++/Sources/Select Folder_S" to="." method="_on_select_folder_s_button_up"]
+[connection signal="button_up" from="Container/C++/Headers/Select Folder_H" to="." method="_on_select_folder_h_button_up"]
+[connection signal="button_up" from="Container/Ready" to="." method="_on_ready_button_up"]
